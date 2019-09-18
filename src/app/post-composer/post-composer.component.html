@@ -1,4 +1,4 @@
-<button *ngIf="editorHidden; else elseBlock" (click)="showEditor()">New Post</button>
+<button *ngIf="editorHidden; else elseBlock" (click)="editorHidden=false">New Post</button>
 <ng-template #elseBlock>
   <form>
     <input #title type="text" placeholder="Title"><br>
@@ -6,4 +6,5 @@
     <textarea #content rows="8" cols="50" placeholder="Body" name="content"></textarea><br>
     <input type="submit" (click)="createPost(title.value, content.value, name.value)">
   </form>
+  <p class="error-message" *ngIf="!messageHidden">Fields cannot be empty</p>
 </ng-template>

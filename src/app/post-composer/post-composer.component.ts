@@ -7,18 +7,21 @@ import { PostService } from '../post.service';
   styleUrls: ['./post-composer.component.scss']
 })
 export class PostComposerComponent implements OnInit {
-  @Input() editorHidden: boolean = true;
+  editorHidden: boolean = true;
+  messageHidden: boolean = true;
   constructor(private postService: PostService) { }
 
   ngOnInit() {
   }
 
-  showEditor(): void {
-    this.editorHidden = false;
-  }
   createPost(title: string, content: string, name: string) {
+    if (title === "" || content === "" || name === "") {
+      this.messageHidden = false;
+      return false;
+    }
     this.postService.addPost(title, content, name);
-    this.editorHidden = true;
+    this.editorHidden = true
+    this.messageHidden = true;
     return false;
   }
 
