@@ -15,6 +15,9 @@ export class PostComposerComponent implements OnInit {
   }
 
   createPost(title: string, content: string, name: string) {
+    title = title.trim();
+    content = content.trim();
+    name = name.trim();
     if (title === "" || content === "" || name === "") {
       this.messageHidden = false;
       return false;
