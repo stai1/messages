@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PostService } from '../post.service';
 
-import { Post } from './post';
-import { getInterpolationArgsLength } from '@angular/compiler/src/render3/view/util';
+import { Post } from '../post';
 
 @Component({
   selector: 'app-board',
@@ -9,11 +9,14 @@ import { getInterpolationArgsLength } from '@angular/compiler/src/render3/view/u
   styleUrls: ['./board.component.scss']
 })
 export class BoardComponent implements OnInit {
-  posts: Post[] = [];
-  constructor() { }
+  posts: Post[];
+  constructor(private postService: PostService) { }
 
   ngOnInit() {
-    this.posts.push(new Post(0, 0, "Post1", "This is a post", "User1"));
-    this.posts.push(new Post(0, 2, "Post2", "This is post2", "User2"));
+    this.getPosts();
+  }
+
+  getPosts(): void {
+    this.postService.getPosts().subscribe(result => this.posts = result);
   }
 }

@@ -1,0 +1,19 @@
+import { Injectable } from '@angular/core';
+import { Observable, of} from 'rxjs';
+
+import { Post } from './post';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class PostService {
+  posts: Post[] = [
+    new Post(0, 0, "Post1", "This is a post", "User1"),
+    new Post(0, 2, "Post2", "This is post2", "User2")
+  ];
+  constructor() { }
+
+  getPosts(): Observable<Post[]> {
+    return of(this.posts);
+  }
+}
