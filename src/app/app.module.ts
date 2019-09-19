@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BoardComponent } from './board/board.component';
 import { PostComposerComponent } from './post-composer/post-composer.component';
+import { PostComponent } from './post/post.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BoardComponent,
-    PostComposerComponent
+    PostComposerComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,

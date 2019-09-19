@@ -9,7 +9,7 @@ import { Post } from './post';
 export class PostService {
   posts: Post[] = [
     new Post(0, 0, "Post1", "This is a post", "User1"),
-    new Post(0, 2, "Post2", "This is post2", "User2")
+    new Post(1, 2, "Post2", "This is post2", "User2")
   ]; // TODO: unhardcode and use database
   constructor() { }
 
@@ -19,5 +19,13 @@ export class PostService {
 
   getPosts(): Observable<Post[]> {
     return of(this.posts);
+  }
+
+  getPost(id: number): Observable<Post> {
+    for(let post of this.posts) {
+      if(post.id === id) {
+        return of(post);
+      }
+    }
   }
 }
