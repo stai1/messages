@@ -1,3 +1,5 @@
-<h1>{{post.title}}</h1>
-<p>by {{post.name}} on {{post.time | date:'y/MM/dd, hh:mm:ss'}}</p>
-<p>{{post.content}}</p>
+<div *ngIf="post">
+  <h1>{{post.title}}</h1>
+  <p>by {{post.name}} on {{post.time | date:'y/MM/dd, hh:mm:ss'}}</p>
+  <p>{{post.content}}</p>
+</div>
