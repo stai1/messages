@@ -12,7 +12,6 @@ export class InMemoryDataService implements InMemoryDbService {
       new Post(this.genId(), new Date(0), "Post1", "This is a post", "User1"),
       new Post(this.genId(), new Date(2), "Post2", "This is post2", "User2")
     ];
-    console.log(posts);
     return {posts};
   }
   genId(): number {
