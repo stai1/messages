@@ -5,7 +5,7 @@ import { Post } from '../post';
 @Component({
   selector: 'app-post-composer',
   templateUrl: './post-composer.component.html',
-  styleUrls: ['./post-composer.component.scss']
+  styleUrls: ['./post-composer.component.scss','../post-view/post-view.component.scss']
 })
 export class PostComposerComponent implements OnInit {
   @Input() posts: Post[];

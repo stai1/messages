@@ -1,5 +1,4 @@
-<button *ngIf="editorHidden; else elseBlock" (click)="editorHidden=false">New Post</button>
-<ng-template #elseBlock>
+<div *ngIf="!editorHidden; else elseBlock" class="post-container">
   <form>
     <input #title type="text" placeholder="Title"><br>
     <input #name type="text" placeholder="Name"><br>
@@ -8,4 +7,7 @@
     <button (click)="editorHidden=true">Cancel</button>
   </form>
   <p class="error-message" *ngIf="!messageHidden">Fields cannot be empty</p>
+</div>
+<ng-template #elseBlock>
+  <button *ngIf="editorHidden; else elseBlock" (click)="editorHidden=false">New Post</button>
 </ng-template>
