@@ -3,10 +3,12 @@
   <app-post-composer [posts]='posts'></app-post-composer>
   <div *ngIf="posts">
     <div *ngFor="let post of posts.reverse()">
-      <div routerLink="/post/{{post.id}}">
+      <div routerLink="/post/{{post.id}}" class="post-container">
         <h3>{{post.title}} ({{post.id}})</h3>
         <p>by {{post.name}} on {{post.time | date:'y/MM/dd, hh:mm:ss'}}</p>
-        <p class="content">{{post.content}}</p>
+        <div class="content">
+        <p>{{post.content}}</p>
+        </div>
       </div>
     </div>
   </div>

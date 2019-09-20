@@ -1,3 +1,20 @@
+$content-background: #b0b8c0;
+$post-background: #c0c0c0;
+$post-padding: 20px;
 .content {
-    padding-left: 2ch;
+  background-color: $content-background;
+  box-shadow: 0 0 $post-padding/2 $post-padding/2 $content-background;
+  p {
+    padding: 10px;
+    overflow-wrap: break-word;
+    margin-bottom: 0;
+  }
+}
+
+.post-container {
+  background-color: $post-background;
+  border-radius: 10px;
+  padding: $post-padding;
+  margin: 20px;
+
 }
