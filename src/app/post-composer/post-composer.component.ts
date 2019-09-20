@@ -16,6 +16,14 @@ export class PostComposerComponent implements OnInit {
   ngOnInit() {
   }
 
+  showEditor() {
+    this.editorHidden = false;
+  }
+
+  hideEditor() {
+    this.editorHidden = true;
+    this.messageHidden = true;
+  }
   createPost(title: string, content: string, name: string) {
     title = title.trim();
     content = content.trim();
@@ -25,8 +33,7 @@ export class PostComposerComponent implements OnInit {
       return false;
     }
     this.postService.addPost(title, content, name).subscribe(post => this.posts.push(post));
-    this.editorHidden = true
-    this.messageHidden = true;
+    this.hideEditor();
     return false;
   }
 

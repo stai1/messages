@@ -4,10 +4,10 @@
     <input #name type="text" placeholder="Name"><br>
     <textarea #content rows="8" cols="50" placeholder="Body" name="content"></textarea><br>
     <button (click)="createPost(title.value, content.value, name.value)">Submit</button>
-    <button (click)="editorHidden=true">Cancel</button>
+    <button (click)="hideEditor()">Cancel</button>
   </form>
   <p class="error-message" *ngIf="!messageHidden">Fields cannot be empty</p>
 </div>
 <ng-template #elseBlock>
-  <button *ngIf="editorHidden; else elseBlock" (click)="editorHidden=false">New Post</button>
+  <button *ngIf="editorHidden; else elseBlock" (click)="showEditor()">New Post</button>
 </ng-template>
