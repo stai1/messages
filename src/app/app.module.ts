@@ -10,13 +10,15 @@ import { AppComponent } from './app.component';
 import { BoardComponent } from './board/board.component';
 import { PostComposerComponent } from './post-composer/post-composer.component';
 import { PostComponent } from './post/post.component';
+import { PostViewComponent } from './post-view/post-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BoardComponent,
     PostComposerComponent,
-    PostComponent
+    PostComponent,
+    PostViewComponent
   ],
   imports: [
     BrowserModule,
