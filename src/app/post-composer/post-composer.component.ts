@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PostService } from '../post.service';
 import { Post } from '../post';
 
@@ -11,21 +11,31 @@ import { Post } from '../post';
 export class PostComposerComponent implements OnInit {
   @Input() posts: Post[];
   editorHidden: boolean = true;
-  messageHidden: boolean = true;
   data: {
     title: string;
     content: string;
     name: string;
   } = { title: "", content: "", name: "" };
   form: FormGroup;
+  clickedSubmit = false;
   constructor(private postService: PostService) { }
 
   ngOnInit() {
     this.form = new FormGroup({
-      title: new FormControl(this.data.title),
-      content: new FormControl(this.data.content),
-      name: new FormControl(this.data.name)
+      title: new FormControl(this.data.title, [Validators.required, Validators.pattern('[^\\s]*')]),
+      content: new FormControl(this.data.content, [Validators.required, Validators.pattern('[^\\s]*')]),
+      name: new FormControl(this.data.name, [Validators.required, Validators.pattern('[^\\s]*')]),
     });
+  }
+
+  hasError() {
+    for (let key in this.form.value) {
+      for (let validator in this.form.get(key).errors) {
+        if (this.form.get(key).errors[validator])
+          return true;
+      }
+    }
+    return false;
   }
 
   showEditor() {
@@ -34,18 +44,20 @@ export class PostComposerComponent implements OnInit {
 
   hideEditor() {
     this.editorHidden = true;
-    this.messageHidden = true;
   }
   createPost() {
-    var title = this.form.get('title').value.trim();
-    var content = this.form.get('content').value.trim();
-    var name = this.form.get('name').value.trim();
-    if (title === "" || content === "" || name === "") {
-      this.messageHidden = false;
-      return false;
+    this.clickedSubmit = true;
+    if (!this.hasError()) {
+      var title = this.form.get('title').value.trim();
+      var content = this.form.get('content').value.trim();
+      var name = this.form.get('name').value.trim();
+      this.postService.addPost(title, content, name).subscribe(post => this.posts.push(post));
+      this.hideEditor();
+      for (let key in this.form.value) {
+        this.form.get(key).setValue("");
+      }
+      this.clickedSubmit = false;
     }
-    this.postService.addPost(title, content, name).subscribe(post => this.posts.push(post));
-    this.hideEditor();
     return false;
   }
 
