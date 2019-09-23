@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http'
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
@@ -26,7 +27,8 @@ import { PostViewComponent } from './post-view/post-view.component';
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { delay: 200, dataEncapsulation: false}
-    )
+    ),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
