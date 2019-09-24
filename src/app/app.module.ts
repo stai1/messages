@@ -12,6 +12,7 @@ import { BoardComponent } from './board/board.component';
 import { PostComposerComponent } from './post-composer/post-composer.component';
 import { PostComponent } from './post/post.component';
 import { PostViewComponent } from './post-view/post-view.component';
+import { MiscComponent } from './misc/misc.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { PostViewComponent } from './post-view/post-view.component';
     BoardComponent,
     PostComposerComponent,
     PostComponent,
-    PostViewComponent
+    PostViewComponent,
+    MiscComponent
   ],
   imports: [
     BrowserModule,
