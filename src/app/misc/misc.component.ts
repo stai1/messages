@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-misc',
@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./misc.component.scss']
 })
 export class MiscComponent implements OnInit {
-
+  message: string = "";
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onOutput(m: string) {
+    this.message = m;
   }
 
 }

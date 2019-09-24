@@ -13,6 +13,7 @@ import { PostComposerComponent } from './post-composer/post-composer.component';
 import { PostComponent } from './post/post.component';
 import { PostViewComponent } from './post-view/post-view.component';
 import { MiscComponent } from './misc/misc.component';
+import { OutputterComponent } from './outputter/outputter.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { MiscComponent } from './misc/misc.component';
     PostComposerComponent,
     PostComponent,
     PostViewComponent,
-    MiscComponent
+    MiscComponent,
+    OutputterComponent
   ],
   imports: [
     BrowserModule,
