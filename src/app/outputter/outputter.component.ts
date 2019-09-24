@@ -6,7 +6,6 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./outputter.component.scss']
 })
 export class OutputterComponent implements OnInit {
-  message: string = "";
   @Output() outMessage = new EventEmitter<string>();
   constructor() { }
 

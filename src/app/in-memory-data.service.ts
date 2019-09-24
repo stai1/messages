@@ -8,6 +8,7 @@ import { Post } from './post';
 export class InMemoryDataService implements InMemoryDbService {
   private id = 0;
   createDb(reqInfo?: import("angular-in-memory-web-api").RequestInfo): {} | import("rxjs").Observable<{}> | Promise<{}> {
+    // this variable name determines the valid api url in post.service
     const posts: Post[] = [
       new Post(this.genId(), new Date(0), "Post1", "This is a post", "User1"),
       new Post(this.genId(), new Date(2), "Post2", "This is post2", "User2")

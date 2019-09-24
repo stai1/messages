@@ -12,6 +12,7 @@ export class MiscComponent implements OnInit {
   ngOnInit() {
   }
 
+  // occurs when outputter emits string
   onOutput(m: string) {
     this.message = m;
   }
