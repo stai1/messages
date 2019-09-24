@@ -22,9 +22,9 @@ export class PostComposerComponent implements OnInit {
 
   ngOnInit() {
     this.form = new FormGroup({
-      title: new FormControl(this.data.title, [Validators.required, Validators.pattern('[^\\s]*')]),
-      content: new FormControl(this.data.content, [Validators.required, Validators.pattern('[^\\s]*')]),
-      name: new FormControl(this.data.name, [Validators.required, Validators.pattern('[^\\s]*')]),
+      title: new FormControl(this.data.title, [Validators.required, Validators.pattern('.*[^\\s]+.*')]),
+      content: new FormControl(this.data.content, [Validators.required, Validators.pattern('.*[^\\s]+.*')]),
+      name: new FormControl(this.data.name, [Validators.required, Validators.pattern('.*[^\\s]+.*')]),
     });
   }
 
