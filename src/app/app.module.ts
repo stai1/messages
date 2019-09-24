@@ -14,6 +14,8 @@ import { PostComponent } from './post/post.component';
 import { PostViewComponent } from './post-view/post-view.component';
 import { MiscComponent } from './misc/misc.component';
 import { OutputterComponent } from './outputter/outputter.component';
+import { MultiFieldComponent } from './multi-field/multi-field.component';
+import { SingleFieldComponent } from './single-field/single-field.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { OutputterComponent } from './outputter/outputter.component';
     PostComponent,
     PostViewComponent,
     MiscComponent,
-    OutputterComponent
+    OutputterComponent,
+    MultiFieldComponent,
+    SingleFieldComponent
   ],
   imports: [
     BrowserModule,

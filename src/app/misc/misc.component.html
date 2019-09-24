@@ -1,2 +1,5 @@
 <app-outputter (outMessage)="onOutput($event)"></app-outputter>
 <p>{{message}}</p>
+<!-- Must use property and not getter function,
+  or else values will be treated as changed on each event -->
+<app-multi-field [propertyFields]="propertyFields"></app-multi-field>
