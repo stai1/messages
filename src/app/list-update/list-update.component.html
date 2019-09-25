@@ -1,0 +1,9 @@
+<h2>List updating</h2>
+<p>Angular does not remove and re-add every HTML list element on an update if the HTML list item stays the same and the JS list reference remains the same.</p>
+<p>Click on items to remove them.</p>
+<ul>
+  <button (click)="addToList()">Add</button>
+  <li *ngFor="let item of listItems; let i = index" (click)="removeAt(i)">
+    {{item}}
+  </li>
+</ul>

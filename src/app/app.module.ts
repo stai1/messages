@@ -16,6 +16,7 @@ import { MiscComponent } from './misc/misc.component';
 import { OutputterComponent } from './outputter/outputter.component';
 import { MultiFieldComponent } from './multi-field/multi-field.component';
 import { SingleFieldComponent } from './single-field/single-field.component';
+import { ListUpdateComponent } from './list-update/list-update.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { SingleFieldComponent } from './single-field/single-field.component';
     MiscComponent,
     OutputterComponent,
     MultiFieldComponent,
-    SingleFieldComponent
+    SingleFieldComponent,
+    ListUpdateComponent
   ],
   imports: [
     BrowserModule,
