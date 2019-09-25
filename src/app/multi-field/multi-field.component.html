@@ -1,7 +1,7 @@
 <div>
   <h2>MultiField</h2>
   <form (ngSubmit)="onSubmit()" [formGroup]="form">
-    <div *ngFor="let propertyField of propertyFields">
+    <div *ngFor="let propertyField of propertyFieldGetter()">
       <app-single-field [propertyField]="propertyField" [form]="form"></app-single-field>
     </div>
     <div>
