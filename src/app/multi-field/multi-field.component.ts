@@ -23,8 +23,12 @@ export class MultiFieldComponent implements OnInit {
     return this.propertyFields;
   }
   onSubmit() {
-    this.ps.addPost(this.form.value.title, this.form.value.content, this.form.value.name).subscribe();
-    this.form.reset();
+    var postObservable = this.ps.createPost(this.form);
+    if(postObservable) {
+      postObservable.subscribe();
+      this.form.reset();
+      // TODO: Display confirmation of post
+    }
 
   }
 

@@ -6,7 +6,7 @@
     <button (click)="createPost()">Submit</button>
     <button (click)="hideEditor()">Cancel</button>
   </form>
-  <p *ngIf="hasError() && clickedSubmit" class="error-message">Fields cannot be empty</p>
+  <p *ngIf="postService.hasError(form) && clickedSubmit" class="error-message">Fields cannot be empty</p>
 </div>
 <ng-template #elseBlock>
   <button *ngIf="editorHidden; else elseBlock" (click)="showEditor()">New Post</button>
