@@ -53,9 +53,7 @@ export class PostComposerComponent implements OnInit {
       var name = this.form.get('name').value.trim();
       this.postService.addPost(title, content, name).subscribe(post => this.posts.push(post));
       this.hideEditor();
-      for (let key in this.form.value) {
-        this.form.get(key).setValue("");
-      }
+      this.form.reset();
       this.clickedSubmit = false;
     }
     return false;
