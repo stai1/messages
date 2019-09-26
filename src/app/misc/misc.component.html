@@ -4,3 +4,7 @@
   or else values will be treated as changed on each event -->
 <app-multi-field [propertyFields]="propertyFields"></app-multi-field>
 <div routerLink="/list-update">List update demo</div>
+<h3>bmi</h3>
+<ul>
+  <li *ngFor="let bmi of bmiList">Weight:{{bmi.w}} Height:{{bmi.h}} BMI:{{bmi.bmi}}</li>
+</ul>
