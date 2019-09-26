@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { PropertyField } from './property-field';
+import { Validators } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PropertyFieldService {
   private propertyFields = [
-    new PropertyField({value:"1", key: "name"}),
-    new PropertyField({value:"2", key: "nickname"}),
-    new PropertyField({value:"3", key: "othername"})
+    { value: "1", key: "title", validators: [Validators.required, Validators.pattern('.*[^\\s]+.*')]},
+    new PropertyField({ value: "2", key: "content", validators: [Validators.required, Validators.pattern('.*[^\\s]+.*')] }),
+    new PropertyField({ value: "3", key: "name", validators: [Validators.required, Validators.pattern('.*[^\\s]+.*')] })
   ];
   constructor() { }
 

@@ -12,7 +12,7 @@ export class PropertyFieldControlService {
   toFormGroup(propertyFields: PropertyField[]) {
     let group: any = {};
     for(let propertyField of propertyFields) {
-      group[propertyField.key] = new FormControl(propertyField.value)
+      group[propertyField.key] = new FormControl(propertyField.value, propertyField.validators);
     }
     return new FormGroup(group);
   }
