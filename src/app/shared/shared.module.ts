@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { PostViewComponent } from '../post-view/post-view.component';
 import { PostComposerComponent } from '../post-composer/post-composer.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { AppRoutingModule } from '../app-routing.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -14,15 +14,16 @@ import { AppRoutingModule } from '../app-routing.module';
     PostComposerComponent
   ],
   imports: [
-    AppRoutingModule,
+    //AppRoutingModule,
     CommonModule,
+    RouterModule,
     ReactiveFormsModule,
     FormsModule
   ],
   exports: [
     PostViewComponent,
     PostComposerComponent,
-    AppRoutingModule,
+    RouterModule,
     ReactiveFormsModule,
     FormsModule
   ]

@@ -7,7 +7,7 @@ import { InMemoryDataService } from './in-memory-data.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BoardModule } from './board/board.module';
+//import { BoardModule } from './board/board.module';
 import { PostComponent } from './post/post.component';
 import { MiscComponent } from './misc/misc.component';
 import { OutputterComponent } from './outputter/outputter.component';
@@ -33,7 +33,7 @@ import { SharedModule } from './shared/shared.module';
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { delay: 200, dataEncapsulation: false}
     ),
-    BoardModule,
+//    BoardModule,
     SharedModule
   ],
   providers: [],
