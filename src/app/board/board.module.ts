@@ -15,6 +15,6 @@ import { BoardRoutingModule } from './board-routing.module';
     SharedModule,
     BoardRoutingModule
   ],
-  exports: [ BoardComponent ]
+  exports: [  ]
 })
 export class BoardModule { }
