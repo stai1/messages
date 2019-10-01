@@ -1,3 +1,10 @@
-<div routerLink=""><h1>{{title}}</h1></div>
-<div routerLink="misc"><h1>misc</h1></div>
-<router-outlet></router-outlet>
+<div class="sidenav">
+  <div routerLink="board"><h2 class="link">board</h2></div>
+  <div routerLink="misc"><h2 class="link">misc</h2></div>
+</div>
+<div class="main">
+  <div routerLink=""><h1 class="page-name">{{title}}</h1></div>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

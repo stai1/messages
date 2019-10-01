@@ -1,0 +1,30 @@
+$sidenav-width: 200px;
+
+.sidenav {
+  background-color: #000;
+  color: #fff;
+  height: 100%;
+  width: $sidenav-width;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 0px;
+  .link {
+    margin: 0;
+  }
+}
+
+.main {
+  padding: 20px;
+  margin: 0;
+  margin-left: $sidenav-width;
+  position: fixed;
+  top: 0;
+  .content {
+    margin-top: 20px;
+  }
+}
+
+.page-name {
+  margin: 0;
+}
