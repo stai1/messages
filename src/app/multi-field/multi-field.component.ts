@@ -3,6 +3,7 @@ import { PropertyField } from '../property-field'
 import { PropertyFieldControlService } from '../property-field-control.service';
 import { FormGroup } from '@angular/forms';
 import { PostService } from '../post.service';
+import { PropertyFieldService } from '../property-field.service';
 
 @Component({
   selector: 'app-multi-field',
@@ -11,11 +12,14 @@ import { PostService } from '../post.service';
   providers: [PropertyFieldControlService]
 })
 export class MultiFieldComponent implements OnInit {
-  @Input() propertyFields: PropertyField[] = [];
+  private propertyFields: PropertyField[] = [];
   form: FormGroup;
-  constructor(private pfcs: PropertyFieldControlService, private ps: PostService) { }
+  constructor( private propertyFieldService: PropertyFieldService, private pfcs: PropertyFieldControlService, private ps: PostService) { }
 
   ngOnInit() {
+    // must do this instead of simply calling getPropertyFields() in html
+    // because getter returns new value each time, causing directives to respond
+    this.propertyFields = this.propertyFieldService.getPropertyFields();
     this.form = this.pfcs.toFormGroup(this.propertyFields);
   }
   propertyFieldGetter() {

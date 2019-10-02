@@ -20,11 +20,6 @@ import { SharedModule } from './shared/shared.module';
   declarations: [
     AppComponent,
     PostComponent,
-    MiscComponent,
-    OutputterComponent,
-    MultiFieldComponent,
-    SingleFieldComponent,
-    ListUpdateComponent
   ],
   imports: [
     AppRoutingModule,

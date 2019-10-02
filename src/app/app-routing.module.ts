@@ -3,16 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 //import { BoardComponent } from './board/board.component';
 import { PostComponent } from './post/post.component';
 import { MiscComponent } from './misc/misc.component';
-import { ListUpdateComponent } from './list-update/list-update.component';
 
 
 const routes: Routes = [
-  //{ path: "board", component: BoardComponent },
   { path: "board",
     loadChildren: () => import('./board/board.module').then(m => m.BoardModule)
   },
-  { path: "misc", component: MiscComponent },
-  { path: "list-update", component: ListUpdateComponent },
+  { path: "misc", loadChildren: () => import('./misc/misc.module').then(m => m.MiscModule) },
   { path: "", redirectTo: "/board", pathMatch: "full" },
   { path: "post/:id", component: PostComponent}
 ];
