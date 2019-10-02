@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PostService } from '../post.service';
 import { Post } from '../post';
 import { Observable } from 'rxjs';
+import { fieldPattern } from '../field-pattern';
 
 @Component({
   selector: 'app-post-composer',
@@ -23,9 +24,9 @@ export class PostComposerComponent implements OnInit {
 
   ngOnInit() {
     this.form = new FormGroup({
-      title: new FormControl(this.data.title, [Validators.required, Validators.pattern('.*[^\\s]+.*')]),
-      content: new FormControl(this.data.content, [Validators.required, Validators.pattern('.*[^\\s]+.*')]),
-      name: new FormControl(this.data.name, [Validators.required, Validators.pattern('.*[^\\s]+.*')]),
+      title: new FormControl(this.data.title, [Validators.required, fieldPattern]),
+      content: new FormControl(this.data.content, [Validators.required, fieldPattern]),
+      name: new FormControl(this.data.name, [Validators.required, fieldPattern]),
     });
   }
 
