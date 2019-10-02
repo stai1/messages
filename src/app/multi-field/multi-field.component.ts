@@ -15,12 +15,16 @@ export class MultiFieldComponent implements OnInit {
   private propertyFields: PropertyField[] = [];
   form: FormGroup;
   constructor( private propertyFieldService: PropertyFieldService, private pfcs: PropertyFieldControlService, private ps: PostService) { }
+  displayMessage: boolean = false;
 
   ngOnInit() {
     // must do this instead of simply calling getPropertyFields() in html
     // because getter returns new value each time, causing directives to respond
     this.propertyFields = this.propertyFieldService.getPropertyFields();
     this.form = this.pfcs.toFormGroup(this.propertyFields);
+  }
+  ngOnChanges() {
+    this.displayMessage = false;
   }
   propertyFieldGetter() {
     console.log("test");
@@ -31,8 +35,9 @@ export class MultiFieldComponent implements OnInit {
     if(postObservable) {
       postObservable.subscribe();
       this.form.reset();
-      // TODO: Display confirmation of post
+      this.displayMessage = true;
     }
+    return false;
 
   }
 

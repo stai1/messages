@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { PropertyField } from '../property-field';
 import { FormGroup } from '@angular/forms';
 
@@ -10,6 +10,7 @@ import { FormGroup } from '@angular/forms';
 export class SingleFieldComponent implements OnInit {
   @Input() propertyField: PropertyField;
   @Input() form: FormGroup;
+  @Output() changed: EventEmitter<boolean> = new EventEmitter<boolean>();
   constructor() { }
 
   ngOnInit() {

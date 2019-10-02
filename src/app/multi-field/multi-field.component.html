@@ -2,10 +2,13 @@
   <h2>MultiField</h2>
   <form (ngSubmit)="onSubmit()" [formGroup]="form">
     <div *ngFor="let propertyField of propertyFieldGetter()">
-      <app-single-field [propertyField]="propertyField" [form]="form"></app-single-field>
+      <app-single-field [propertyField]="propertyField" [form]="form" (changed)="displayMessage=false"></app-single-field>
     </div>
     <div>
       <button type="submit">Submit</button>
     </div>
   </form>
+  <div *ngIf="displayMessage">
+    <p>Submitted</p>
+  </div>
 </div>

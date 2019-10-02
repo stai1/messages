@@ -1,4 +1,4 @@
 <div [formGroup]="form">
   <h2>{{propertyField.key}}</h2>
-  <input type="text" class="form-control" [id]="propertyField.key" [formControlName]="propertyField.key">
+  <input type="text" class="form-control" [id]="propertyField.key" [formControlName]="propertyField.key" (input)="changed.emit(true)">
 </div>
