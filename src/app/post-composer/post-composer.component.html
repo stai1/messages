@@ -2,7 +2,7 @@
   <form [formGroup]="form"> <!-- formGroup allows usage of formControlName as formGroup property -->
     <input type="text" placeholder="Title" class="form-control" formControlName="title"><br>
     <input type="text" placeholder="Name" class="form-control" formControlName="name"><br>
-    <textarea #content rows="8" cols="50" placeholder="Body" class="form-control" formControlName="content"></textarea><br>
+    <textarea #content rows="8" placeholder="Body" class="form-control" formControlName="content"></textarea><br>
     <button (click)="createPost()">Submit</button>
     <button (click)="hideEditor()">Cancel</button>
   </form>
