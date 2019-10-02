@@ -8,9 +8,9 @@ import { fieldPattern } from './field-pattern';
 })
 export class PropertyFieldService {
   private propertyFields = [
-    { value: "1", key: "title", validators: [Validators.required, fieldPattern]},
-    new PropertyField({ value: "2", key: "content", validators: [Validators.required, fieldPattern] }),
-    new PropertyField({ value: "3", key: "name", validators: [Validators.required, fieldPattern] })
+    { value: "", key: "title", validators: [Validators.required, fieldPattern]},
+    new PropertyField({ value: "", key: "content", validators: [Validators.required, fieldPattern] }),
+    new PropertyField({ value: "", key: "name", validators: [Validators.required, fieldPattern] })
   ];
   constructor() { }
 
