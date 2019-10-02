@@ -1,6 +1,17 @@
 <div class="sidenav">
-  <div routerLink="board"><h2 class="link">board</h2></div>
-  <div routerLink="misc"><h2 class="link">misc</h2></div>
+  <div>
+    <div routerLink="board"><h2 class="link">board</h2></div>
+    <div class="sublinks">
+    </div>
+  </div>
+  <div>
+    <div routerLink="misc"><h2 class="link">misc</h2></div>
+    <div class="sublinks">
+      <div routerLink="misc/multi-field">MultiField</div>
+      <div routerLink="misc/list-update">List update demo</div>
+      <div routerLink="misc/bmi-observable">bmi-observable</div>
+    </div>
+  </div>
 </div>
 <div class="main">
   <div routerLink=""><h1 class="page-name">{{title}}</h1></div>
