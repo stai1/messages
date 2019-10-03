@@ -1,3 +1,6 @@
 <div *ngIf="post">
-  <app-post-view [post]="post"></app-post-view>
+  <div *ngIf="postComposer.editorHidden" (click)="postComposer.editorHidden=false">
+    <app-post-view [post]="post"></app-post-view>
+  </div>
+  <app-post-composer #postComposer [inpost]="post" (outpost)="post=$event"></app-post-composer>
 </div>

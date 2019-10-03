@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, OnChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PostService } from '../post.service';
 import { Post } from '../post';
@@ -10,8 +10,9 @@ import { fieldPattern } from '../field-pattern';
   templateUrl: './post-composer.component.html',
   styleUrls: ['./post-composer.component.scss', '../post-view/post-view.component.scss']
 })
-export class PostComposerComponent implements OnInit {
-  @Input() posts: Post[];
+export class PostComposerComponent implements OnInit, OnChanges {
+  @Output() outpost: EventEmitter<Post> = new EventEmitter<Post>();
+  @Input() inpost: Post;
   editorHidden: boolean = true;
   data: {
     title: string;
@@ -20,9 +21,22 @@ export class PostComposerComponent implements OnInit {
   } = { title: "", content: "", name: "" };
   form: FormGroup;
   clickedSubmit = false;
+
   constructor(private postService: PostService) { }
 
   ngOnInit() {
+
+  }
+
+  ngOnChanges() {
+    console.log(this.inpost);
+    if (this.inpost) {
+      this.data = {
+        title: this.inpost.title,
+        content: this.inpost.content,
+        name: this.inpost.name
+      }
+    }
     this.form = new FormGroup({
       title: new FormControl(this.data.title, [Validators.required, fieldPattern]),
       content: new FormControl(this.data.content, [Validators.required, fieldPattern]),
@@ -37,11 +51,25 @@ export class PostComposerComponent implements OnInit {
   hideEditor() {
     this.editorHidden = true;
   }
-  createPost() {
+  submitPost() {
     this.clickedSubmit = true;
-    var postObservable: Observable<Post> = this.postService.createPost(this.form);
+    var postObservable: Observable<Post>
+    if (!this.inpost) {
+      console.log(this.inpost);
+      postObservable = this.postService.createPost(this.form);
+    }
+    else {
+      postObservable = this.postService.updatePost(this.inpost, this.form);
+    }
     if (postObservable) {
-      postObservable.subscribe(post => this.posts.push(post));
+      //postObservable.subscribe(post => this.outpost.emit(post));
+
+      // bad hotfix; postObservable returns null for put request for some reason even though the update happens
+      postObservable.subscribe(post => { if (post) this.outpost.emit(post); });
+      if (this.inpost) {
+        this.outpost.emit(this.postService.postFromForm(this.inpost.id, this.form))
+      }
+
       this.hideEditor();
       this.form.reset();
       this.clickedSubmit = false;

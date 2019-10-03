@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { PostService } from '../post.service';
 
 import { Post } from '../post';
+import { PostComposerComponent } from '../post-composer/post-composer.component';
 
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
-  styleUrls: ['./board.component.scss']
+  styleUrls: ['./board.component.scss'],
 })
 export class BoardComponent implements OnInit {
+  @ViewChild(PostComposerComponent, {static: false}) child:PostComposerComponent;
   posts: Post[];
   constructor(private postService: PostService) { }
 
@@ -18,5 +20,13 @@ export class BoardComponent implements OnInit {
 
   getPosts(): void {
     this.postService.getPosts().subscribe(result => this.posts = result);
+  }
+
+  showEditor() {
+    this.child.showEditor();
+  }
+
+  editorHidden() {
+    return this.child.editorHidden;
   }
 }

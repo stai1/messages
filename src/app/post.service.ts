@@ -13,8 +13,14 @@ export class PostService {
   posts: Post[] = [];
   constructor(private http: HttpClient) { }
 
-  addPost(title: string, content: string, name: string): Observable<Post> {
-    return this.http.post<Post>(this.postsUrl, new Post(null, new Date(), title, content, name))
+  postFromForm(id: number, form: FormGroup) {
+    if (!this.hasError(form)) {
+      var title = form.get('title').value.trim();
+      var content = form.get('content').value.trim();
+      var name = form.get('name').value.trim();
+      return new Post(id, new Date(), title, content, name);
+    }
+    return null;
   }
 
   hasError(form: FormGroup) {
@@ -28,11 +34,16 @@ export class PostService {
 
   }
   createPost(form: FormGroup) {
-    if (!this.hasError(form)) {
-      var title = form.get('title').value.trim();
-      var content = form.get('content').value.trim();
-      var name = form.get('name').value.trim();
-      return this.addPost(title, content, name);
+    var post = this.postFromForm(null, form);
+    if(post) {
+      return this.http.post<Post>(this.postsUrl, post);
+    }
+    return null;
+  }
+  updatePost(p: Post, form: FormGroup): Observable<Post> {
+    var post = this.postFromForm(p.id, form);
+    if(post) {
+      return this.http.put<Post>(this.postsUrl, post);
     }
     return null;
   }

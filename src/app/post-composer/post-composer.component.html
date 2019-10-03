@@ -1,13 +1,10 @@
-<div *ngIf="!editorHidden; else elseBlock" class="post-container">
+<div *ngIf="!editorHidden" class="post-container">
   <form [formGroup]="form"> <!-- formGroup allows usage of formControlName as formGroup property -->
     <input type="text" placeholder="Title" class="form-control" formControlName="title"><br>
     <input type="text" placeholder="Name" class="form-control" formControlName="name"><br>
     <textarea #content rows="8" placeholder="Body" class="form-control" formControlName="content"></textarea><br>
-    <button (click)="createPost()">Submit</button>
+    <button (click)="submitPost()">Submit</button>
     <button (click)="hideEditor()">Cancel</button>
   </form>
   <p *ngIf="postService.hasError(form) && clickedSubmit" class="error-message">Fields cannot be empty</p>
 </div>
-<ng-template #elseBlock>
-  <button *ngIf="editorHidden; else elseBlock" (click)="showEditor()">New Post</button>
-</ng-template>

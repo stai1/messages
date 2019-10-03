@@ -1,7 +1,8 @@
 <h2>Posts</h2>
 <div>
+  <button *ngIf="postComposer.editorHidden" (click)="showEditor()">New Post</button>
   <div class="post-item">
-    <app-post-composer [posts]='posts'></app-post-composer>
+    <app-post-composer #postComposer (outpost)="posts.push($event)"></app-post-composer>
   </div>
   <div *ngIf="posts">
     <div *ngFor="let post of posts.reverse()" routerLink="/post/{{post.id}}" class="post-item">
