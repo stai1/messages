@@ -1,5 +1,7 @@
 <h3>bmi</h3>
-<p>Modified example from <a href="https://rxjs.dev/api/index/function/combineLatest">rxjs docs</a>.</p>
+<p>Modified example from <a href="https://rxjs.dev/api/index/function/combineLatest">rxjs docs</a>.
+  Weight and height are returned subject to a timer, combineLatest used to calculate BMI whenever weight or height is returned.
+</p>
 <ul>
   <li *ngFor="let bmi of bmiList">Weight:{{bmi.w}} Height:{{bmi.h}} BMI:{{bmi.bmi}}</li>
 </ul>
