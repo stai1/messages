@@ -1,6 +1,6 @@
 <div>
   <h2>MultiField</h2>
-  <p>Dynamic form demo</p>
+  <p>Dynamic form demo. Submits to the list of posts.</p>
   <form (ngSubmit)="onSubmit()" [formGroup]="form">
     <div *ngFor="let propertyField of propertyFieldGetter()">
       <app-single-field [propertyField]="propertyField" [form]="form" (changed)="displayMessage=false"></app-single-field>
